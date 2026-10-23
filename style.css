@@ -1,0 +1,148 @@
+/* ===== Police personnalisée ===== */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600&display=swap');
+
+/* ===== Variables ===== */
+:root {
+  --fond: #0f1226;
+  --fond-carte: #1b2040;
+  --texte: #e8ecff;
+  --accent: #ffc94d;
+  --accent-doux: #7aa2ff;
+}
+
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--fond);   /* couleur de fond */
+  color: var(--texte);             /* couleur du texte */
+  font-family: 'Inter', Arial, sans-serif;
+  line-height: 1.7;
+  padding: 0 1.5rem 3rem;
+}
+
+/* ===== En-tête / titre mis en valeur ===== */
+.hero-banner {
+  text-align: center;
+  padding: 3.5rem 1rem 2rem;
+}
+
+.titre-principal {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 18px rgba(255, 201, 77, 0.35);
+}
+
+.slogan {
+  margin-top: 0.75rem;
+  font-style: italic;
+  color: var(--accent-doux);
+}
+
+/* ===== Menu de navigation ===== */
+.menu {
+  margin-top: 1.75rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.menu a {
+  color: var(--texte);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--accent-doux);
+  border-radius: 999px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.menu a:hover,
+.menu a.actif {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--fond);
+}
+
+/* ===== Contenu ===== */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+section {
+  background-color: var(--fond-carte);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+section p + p {
+  margin-top: 1rem;
+}
+
+ul {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+li::before {
+  content: "▹ ";
+  color: var(--accent-doux);
+}
+
+.appel {
+  margin-top: 1.25rem;
+}
+
+a {
+  color: var(--accent-doux);
+}
+
+/* ===== Page héros ===== */
+.grille-heros {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.carte-heros {
+  background-color: var(--fond-carte);
+  border-radius: 10px;
+  padding: 1.75rem;
+  border-top: 4px solid var(--accent-doux);
+  transition: transform 0.2s;
+}
+
+.carte-heros:hover {
+  transform: translateY(-5px);
+}
+
+.alias {
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* ===== Pied de page ===== */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
