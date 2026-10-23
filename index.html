@@ -3,52 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Les Gardiens de l'Aube — Accueil</title>
+  <title>Les Gardiens de l'Aube</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="hero-banner">
-    <h1 class="titre-principal">Les Gardiens de l'Aube</h1>
-    <p class="slogan">« Là où la nuit s'arrête, nous commençons. »</p>
+  <!-- ===== Barre de navigation ===== -->
+  <nav class="nav">
+    <a class="nav__marque" href="index.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M2 18h20" />
+        <path d="M12 18a6 6 0 0 1 12 0" transform="translate(-6 0)" />
+        <path d="M12 3v3M5 6l2 2M19 6l-2 2" />
+      </svg>
+      Gardiens de l'Aube
+    </a>
+    <ul class="nav__liens">
+      <li><a href="index.html" aria-current="page">Accueil</a></li>
+      <li><a href="heroes.html">Nos héros</a></li>
+    </ul>
+  </nav>
 
-    <nav class="menu">
-      <a href="index.html" class="actif">Accueil</a>
-      <a href="heroes.html">Nos héros</a>
-    </nav>
+  <!-- ===== Horizon : le titre est posé sur la ligne de lumière ===== -->
+  <header class="horizon">
+    <div class="horizon__ciel"></div>
+    <div class="horizon__contenu">
+      <p class="horizon__lieu">Port-Lumière · veille nocturne</p>
+      <h1 class="titre">Les Gardiens<br>de l'Aube</h1>
+      <p class="slogan">Là où la nuit s'arrête, nous commençons.</p>
+    </div>
+    <div class="horizon__ligne"></div>
   </header>
 
   <main>
-    <section class="presentation">
-      <h2>Qui sommes-nous ?</h2>
-      <p>
-        Les Gardiens de l'Aube sont une équipe de trois protecteurs réunis par un
-        même serment : veiller sur la ville de Port-Lumière pendant que ses
-        habitants dorment. Formée après la Grande Panne de 2019, l'équipe
-        intervient là où les secours classiques ne peuvent plus passer.
+
+    <!-- ===== Présentation générale ===== -->
+    <section class="serment">
+      <h2>Le serment</h2>
+      <p class="serment__ouverture">
+        Trois protecteurs veillent sur Port-Lumière pendant que la ville dort.
       </p>
       <p>
-        Chacun de nos membres possède un don unique, mais c'est leur
-        complémentarité qui fait leur force : l'un ouvre la voie, l'autre protège,
-        le dernier répare ce qui a été brisé.
+        L'équipe s'est formée après la Grande Panne de 2019, la nuit où quarante
+        mille habitants se sont retrouvés sans électricité ni secours pendant
+        neuf heures. Depuis, les Gardiens interviennent là où les services de la
+        ville ne peuvent plus passer : tunnels effondrés, quartiers coupés du
+        réseau, immeubles privés de lumière.
+      </p>
+      <p>
+        Chacun possède un don unique, mais c'est leur complémentarité qui fait
+        leur force. Aurore ouvre la voie, Selim protège la progression, Ines
+        répare ce qui a été brisé. Aucun des trois ne sort seul.
       </p>
     </section>
 
-    <section class="chiffres">
-      <h2>En quelques chiffres</h2>
-      <ul>
-        <li><strong>3</strong> membres actifs</li>
-        <li><strong>412</strong> interventions depuis la création</li>
-        <li><strong>1</strong> seule règle : ne jamais laisser quelqu'un derrière</li>
-      </ul>
-      <p class="appel">
-        Envie de les connaître ? <a href="heroes.html">Découvrez l'équipe →</a>
-      </p>
+    <!-- ===== Chiffres : filets fins plutôt que cartes ===== -->
+    <section class="bilan">
+      <h2 class="bilan__titre">Depuis la première nuit</h2>
+      <dl class="bilan__liste">
+        <div>
+          <dt>Membres actifs</dt>
+          <dd>3</dd>
+        </div>
+        <div>
+          <dt>Interventions</dt>
+          <dd>412</dd>
+        </div>
+        <div>
+          <dt>Nuits de veille</dt>
+          <dd>2 557</dd>
+        </div>
+        <div>
+          <dt>Personne laissée derrière</dt>
+          <dd>0</dd>
+        </div>
+      </dl>
     </section>
+
+    <!-- ===== Renvoi vers la page héros ===== -->
+    <section class="renvoi">
+      <p>Trois dons, un seul serment.</p>
+      <a class="bouton" href="heroes.html">Rencontrer l'équipe</a>
+    </section>
+
   </main>
 
-  <footer>
-    <p>© 2026 — Les Gardiens de l'Aube · Projet TP#3 Git &amp; GitHub</p>
+  <footer class="pied">
+    <p>Les Gardiens de l'Aube — site fictif réalisé pour le TP#3 Git &amp; GitHub.</p>
   </footer>
 
 </body>

@@ -3,58 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Les Gardiens de l'Aube — Nos héros</title>
+  <title>Nos héros — Les Gardiens de l'Aube</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="hero-banner">
-    <h1 class="titre-principal">Nos héros</h1>
-    <p class="slogan">Trois dons, un seul serment.</p>
+  <!-- ===== Barre de navigation ===== -->
+  <nav class="nav">
+    <a class="nav__marque" href="index.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M2 18h20" />
+        <path d="M12 18a6 6 0 0 1 12 0" transform="translate(-6 0)" />
+        <path d="M12 3v3M5 6l2 2M19 6l-2 2" />
+      </svg>
+      Gardiens de l'Aube
+    </a>
+    <ul class="nav__liens">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="heroes.html" aria-current="page">Nos héros</a></li>
+    </ul>
+  </nav>
 
-    <nav class="menu">
-      <a href="index.html">Accueil</a>
-      <a href="heroes.html" class="actif">Nos héros</a>
-    </nav>
+  <header class="horizon horizon--court">
+    <div class="horizon__ciel"></div>
+    <div class="horizon__contenu">
+      <p class="horizon__lieu">Trois dons, un seul serment</p>
+      <h1 class="titre">Nos héros</h1>
+    </div>
+    <div class="horizon__ligne"></div>
   </header>
 
-  <main class="grille-heros">
+  <main class="equipe">
 
-    <article class="carte-heros">
-      <h2>Aurore Vance</h2>
-      <p class="alias">alias <em>Première Lueur</em></p>
-      <p>
-        Capitaine de l'équipe. Elle peut concentrer la lumière environnante en un
-        faisceau capable de traverser le béton. Ancienne ingénieure du réseau
-        électrique de Port-Lumière, c'est elle qui connaît le mieux les souterrains
-        de la ville.
-      </p>
+    <!-- ===== Aurore Vance ===== -->
+    <article class="fiche" style="--signature:#ffc14d">
+      <div class="fiche__sigle">
+        <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <circle cx="60" cy="60" r="18" />
+          <path d="M60 10v22M60 88v22M10 60h22M88 60h22M25 25l15 15M95 95L80 80M95 25L80 40M25 95l15-15" />
+        </svg>
+      </div>
+      <div class="fiche__texte">
+        <p class="fiche__alias">Première Lueur</p>
+        <h2 class="fiche__nom">Aurore Vance</h2>
+        <p class="fiche__role">Capitaine · ouverture de passage</p>
+        <p>
+          Elle concentre la lumière environnante en un faisceau capable de
+          traverser le béton. Ancienne ingénieure du réseau électrique de
+          Port-Lumière, c'est elle qui connaît le mieux les souterrains de la
+          ville, et la seule à pouvoir y retrouver son chemin dans le noir
+          complet.
+        </p>
+      </div>
     </article>
 
-    <article class="carte-heros">
-      <h2>Selim Dorval</h2>
-      <p class="alias">alias <em>Rempart</em></p>
-      <p>
-        Le bouclier du groupe. Sa peau se densifie au contact d'un choc, ce qui lui
-        permet d'encaisser l'impossible pour couvrir la progression des autres.
-        Calme, méthodique, il refuse systématiquement de frapper en premier.
-      </p>
+    <!-- ===== Selim Dorval ===== -->
+    <article class="fiche" style="--signature:#74a9e0">
+      <div class="fiche__sigle">
+        <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <path d="M60 12l40 16v30c0 28-18 42-40 50-22-8-40-22-40-50V28z" />
+          <path d="M60 40v44" />
+        </svg>
+      </div>
+      <div class="fiche__texte">
+        <p class="fiche__alias">Rempart</p>
+        <h2 class="fiche__nom">Selim Dorval</h2>
+        <p class="fiche__role">Protection · couverture d'équipe</p>
+        <p>
+          Sa peau se densifie au contact d'un choc, ce qui lui permet d'encaisser
+          l'impossible pendant que les autres avancent. Calme, méthodique,
+          il refuse systématiquement de frapper en premier et tient le compte
+          exact des sorties de chacun.
+        </p>
+      </div>
     </article>
 
-    <article class="carte-heros">
-      <h2>Ines Okonkwo</h2>
-      <p class="alias">alias <em>Rafistole</em></p>
-      <p>
-        La réparatrice. D'un simple contact, elle remet en état machines, câbles et
-        structures effondrées — et soigne les blessures légères. La plus jeune de
-        l'équipe, et de loin la plus bavarde pendant les missions.
-      </p>
+    <!-- ===== Ines Okonkwo ===== -->
+    <article class="fiche" style="--signature:#7fd4a8">
+      <div class="fiche__sigle">
+        <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <path d="M22 78L58 26l10 30 12-10 18 32z" />
+          <path d="M14 98h92" />
+        </svg>
+      </div>
+      <div class="fiche__texte">
+        <p class="fiche__alias">Rafistole</p>
+        <h2 class="fiche__nom">Ines Okonkwo</h2>
+        <p class="fiche__role">Réparation · soins de terrain</p>
+        <p>
+          D'un simple contact, elle remet en état machines, câbles et structures
+          effondrées, et soigne les blessures légères. La plus jeune de l'équipe,
+          et de loin la plus bavarde pendant les missions : elle commente chaque
+          réparation à voix haute pour garder les autres avec elle.
+        </p>
+      </div>
     </article>
 
   </main>
 
-  <footer>
-    <p>© 2026 — Les Gardiens de l'Aube · Projet TP#3 Git &amp; GitHub</p>
+  <footer class="pied">
+    <p>Les Gardiens de l'Aube — site fictif réalisé pour le TP#3 Git &amp; GitHub.</p>
   </footer>
 
 </body>

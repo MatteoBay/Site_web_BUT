@@ -1,148 +1,403 @@
-/* ===== Police personnalisée ===== */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600&display=swap');
+/* =========================================================
+   Les Gardiens de l'Aube — feuille de style
+   Direction : l'horizon, le moment où la nuit bascule
+   ========================================================= */
 
-/* ===== Variables ===== */
+/* ----- Polices personnalisées (Google Fonts) ----- */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap');
+
+/* ----- Jetons de couleur ----- */
 :root {
-  --fond: #0f1226;
-  --fond-carte: #1b2040;
-  --texte: #e8ecff;
-  --accent: #ffc94d;
-  --accent-doux: #7aa2ff;
+  --nuit:        #0d1030;  /* couleur de fond principale */
+  --nuit-haute:  #060818;
+  --brume:       #272c56;
+  --horizon:     #ff9d4d;
+  --lueur:       #ffd98f;
+  --braise:      #e2607a;
+  --texte:       #ece9f6;  /* couleur du texte */
+  --texte-doux:  #9b99bd;
+  --filet:       rgba(236, 233, 246, .16);
+
+  --colonne: 34rem;         /* largeur de lecture : < 80 caractères */
 }
 
-/* ===== Base ===== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ----- Base ----- */
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
-  background-color: var(--fond);   /* couleur de fond */
-  color: var(--texte);             /* couleur du texte */
-  font-family: 'Inter', Arial, sans-serif;
-  line-height: 1.7;
-  padding: 0 1.5rem 3rem;
+  margin: 0;
+  background: var(--nuit);
+  color: var(--texte);
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.0625rem;
+  font-weight: 300;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ===== En-tête / titre mis en valeur ===== */
-.hero-banner {
-  text-align: center;
-  padding: 3.5rem 1rem 2rem;
+p { margin: 0 0 1.1em; }
+
+a { color: var(--lueur); }
+
+:focus-visible {
+  outline: 2px solid var(--horizon);
+  outline-offset: 3px;
 }
 
-.titre-principal {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(2rem, 7vw, 3.5rem);
-  letter-spacing: 2px;
+/* =========================================================
+   Navigation
+   ========================================================= */
+.nav {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.4rem clamp(1.25rem, 5vw, 4rem);
+}
+
+.nav__marque {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--accent);
-  text-shadow: 0 0 18px rgba(255, 201, 77, 0.35);
+  color: var(--texte);
+  text-decoration: none;
+}
+
+.nav__marque svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: var(--horizon);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+
+.nav__liens {
+  display: flex;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__liens a {
+  position: relative;
+  padding-bottom: .35rem;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--texte-doux);
+  text-decoration: none;
+  transition: color .25s;
+}
+
+.nav__liens a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--horizon);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s;
+}
+
+.nav__liens a:hover,
+.nav__liens a[aria-current] { color: var(--texte); }
+.nav__liens a:hover::after,
+.nav__liens a[aria-current]::after { transform: scaleX(1); }
+
+/* =========================================================
+   Horizon — le titre posé sur la ligne de lumière
+   ========================================================= */
+.horizon {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 78vh;
+  padding: 6rem clamp(1.25rem, 5vw, 4rem) 3.5rem;
+  margin-top: -5rem;
+  overflow: hidden;
+}
+
+.horizon--court { min-height: 46vh; }
+
+/* dégradé nuit -> première lueur */
+.horizon__ciel {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 70% at 50% 100%,
+      var(--lueur) 0%,
+      var(--horizon) 14%,
+      var(--braise) 30%,
+      var(--brume) 56%,
+      var(--nuit-haute) 85%);
+  opacity: .9;
+  transform-origin: bottom center;
+  animation: lever 1.6s cubic-bezier(.22,.8,.3,1) both;
+}
+
+/* voile sombre pour garder le texte lisible */
+.horizon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(13,16,48,.86) 0%,
+    rgba(13,16,48,.35) 40%,
+    rgba(6,8,24,.55) 100%);
+  z-index: 1;
+}
+
+.horizon__contenu {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.horizon__ligne {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  z-index: 2;
+  background: linear-gradient(to right,
+    transparent, var(--horizon) 20%, var(--lueur) 50%, var(--horizon) 80%, transparent);
+}
+
+.horizon__lieu {
+  margin: 0 0 1rem;
+  font-size: .95rem;
+  font-style: italic;
+  color: var(--lueur);
+}
+
+/* ----- Titre mis en valeur ----- */
+.titre {
+  margin: 0;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 13vw, 10rem);
+  line-height: .82;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 60px rgba(255, 157, 77, .35);
 }
 
 .slogan {
-  margin-top: 0.75rem;
+  max-width: 30rem;
+  margin: 1.5rem 0 0;
+  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
   font-style: italic;
-  color: var(--accent-doux);
-}
-
-/* ===== Menu de navigation ===== */
-.menu {
-  margin-top: 1.75rem;
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.menu a {
   color: var(--texte);
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.5rem 1.25rem;
-  border: 1px solid var(--accent-doux);
-  border-radius: 999px;
-  transition: background-color 0.2s, color 0.2s;
 }
 
-.menu a:hover,
-.menu a.actif {
-  background-color: var(--accent);
-  border-color: var(--accent);
-  color: var(--fond);
+@keyframes lever {
+  from { transform: translateY(14%) scaleY(1.12); opacity: 0; }
+  to   { transform: none; opacity: .9; }
 }
 
-/* ===== Contenu ===== */
+/* =========================================================
+   Contenu courant
+   ========================================================= */
 main {
-  max-width: 900px;
-  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 4rem);
 }
 
 h2 {
-  font-family: 'Orbitron', sans-serif;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--horizon);
+  margin: 0 0 1.5rem;
 }
 
-section {
-  background-color: var(--fond-carte);
-  border-left: 4px solid var(--accent);
-  border-radius: 10px;
-  padding: 1.75rem;
-  margin-bottom: 1.5rem;
+/* ----- Le serment ----- */
+.serment {
+  max-width: var(--colonne);
+  padding: 5rem 0 4rem;
 }
 
-section p + p {
-  margin-top: 1rem;
+.serment__ouverture {
+  font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+  line-height: 1.45;
+  color: #fff;
+  margin-bottom: 1.6em;
 }
 
-ul {
-  list-style: none;
-  margin-top: 0.5rem;
+.serment p:not(.serment__ouverture) { color: var(--texte-doux); }
+
+/* ----- Bilan chiffré ----- */
+.bilan {
+  padding: 3rem 0 4.5rem;
+  border-top: 1px solid var(--filet);
 }
 
-li::before {
-  content: "▹ ";
-  color: var(--accent-doux);
-}
-
-.appel {
-  margin-top: 1.25rem;
-}
-
-a {
-  color: var(--accent-doux);
-}
-
-/* ===== Page héros ===== */
-.grille-heros {
+.bilan__liste {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 2.5rem 3rem;
+  margin: 0;
+}
+
+.bilan__liste div {
+  border-left: 1px solid var(--filet);
+  padding-left: 1.25rem;
+}
+
+.bilan__liste dt {
+  font-size: .9rem;
+  color: var(--texte-doux);
+}
+
+.bilan__liste dd {
+  margin: .2rem 0 0;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--lueur);
+}
+
+/* ----- Renvoi ----- */
+.renvoi {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  padding: 2.5rem 0 5rem;
+  border-top: 1px solid var(--filet);
 }
 
-.carte-heros {
-  background-color: var(--fond-carte);
-  border-radius: 10px;
-  padding: 1.75rem;
-  border-top: 4px solid var(--accent-doux);
-  transition: transform 0.2s;
+.renvoi p {
+  margin: 0;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--texte-doux);
 }
 
-.carte-heros:hover {
-  transform: translateY(-5px);
+.bouton {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--nuit);
+  background: var(--horizon);
+  text-decoration: none;
+  padding: .7rem 2rem;
+  transition: background .25s, color .25s;
 }
 
-.alias {
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 0.75rem;
+.bouton:hover { background: var(--lueur); }
+
+/* =========================================================
+   Fiches héros
+   ========================================================= */
+.equipe {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding-top: 4rem;
+  padding-bottom: 5rem;
 }
 
-/* ===== Pied de page ===== */
-footer {
-  text-align: center;
-  margin-top: 3rem;
-  font-size: 0.85rem;
-  opacity: 0.6;
+.fiche {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 2.5rem;
+  padding: 3.25rem 0;
+  border-top: 1px solid var(--filet);
+}
+
+.fiche:first-child { border-top: 0; padding-top: 1rem; }
+
+.fiche__sigle svg {
+  width: 100%;
+  height: auto;
+  fill: none;
+  stroke: var(--signature);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: .9;
+}
+
+.fiche__texte { max-width: var(--colonne); }
+
+.fiche__alias {
+  margin: 0;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--signature);
+}
+
+.fiche__nom {
+  margin: .1rem 0 .4rem;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 6vw, 3.75rem);
+  line-height: .95;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.fiche__role {
+  margin: 0 0 1.3rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--filet);
+  font-size: .95rem;
+  color: var(--texte-doux);
+}
+
+.fiche__texte p:last-child { margin-bottom: 0; }
+
+/* =========================================================
+   Pied de page
+   ========================================================= */
+.pied {
+  padding: 2rem clamp(1.25rem, 5vw, 4rem) 3rem;
+  border-top: 1px solid var(--filet);
+  font-size: .9rem;
+  color: var(--texte-doux);
+}
+
+.pied p { margin: 0; }
+
+/* =========================================================
+   Petits écrans
+   ========================================================= */
+@media (max-width: 640px) {
+  .horizon { min-height: 70vh; }
+
+  .fiche {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .fiche__sigle svg { width: 5.5rem; }
+
+  .bilan__liste dd { font-size: 2.75rem; }
+}
+
+/* ----- Accessibilité : animations réduites ----- */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
