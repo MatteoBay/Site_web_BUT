@@ -38,15 +38,15 @@ Aucune installation nécessaire : cloner le dépôt puis ouvrir `index.html` dan
 un navigateur.
 
 ```bash
-git clone https://github.com/UTILISATEUR/super-heroes.git
+git clone https://github.com/MatteoBay/Site_web_BUT
 cd super-heroes
 ```
 
 ## Auteurs
 
-- Prénom NOM
-- Prénom NOM
+- Matteo BAY
+- Santiago FERNANDEZ
 
 ## Dépôt GitHub
 
-https://github.com/UTILISATEUR/super-heroes
+https://github.com/MatteoBay/Site_web_BUT
